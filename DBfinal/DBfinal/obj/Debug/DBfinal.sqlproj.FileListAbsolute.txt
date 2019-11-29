@@ -1,0 +1,11 @@
+C:\Users\102146016\source\repos\DBfinal\DBfinal\bin\Debug\DBfinal.dacpac
+C:\Users\102146016\source\repos\DBfinal\DBfinal\obj\Debug\DBfinal.dll
+C:\Users\102146016\source\repos\DBfinal\DBfinal\obj\Debug\DBfinal.pdb
+C:\Users\102146016\source\repos\DBfinal\DBfinal\bin\Debug\DBfinal.dll
+C:\Users\102146016\source\repos\DBfinal\DBfinal\bin\Debug\DBfinal.pdb
+C:\Users\102146016\Downloads\DBfinal\DBfinal\bin\Debug\DBfinal.dacpac
+C:\Users\102146016\Downloads\DBfinal\DBfinal\bin\Debug\DBfinal.dll
+C:\Users\102146016\Downloads\DBfinal\DBfinal\bin\Debug\DBfinal.pdb
+C:\Users\102146016\Downloads\DBfinal\DBfinal\obj\Debug\DBfinal.sqlprojAssemblyReference.cache
+C:\Users\102146016\Downloads\DBfinal\DBfinal\obj\Debug\DBfinal.dll
+C:\Users\102146016\Downloads\DBfinal\DBfinal\obj\Debug\DBfinal.pdb

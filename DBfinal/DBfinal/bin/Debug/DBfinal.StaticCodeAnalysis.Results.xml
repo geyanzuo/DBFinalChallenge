@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Problems>
+  <Problem>
+    <Rule>Microsoft.Rules.Data.SR0009</Rule>
+    <ProblemDescription>Avoid VARCHAR of only 2 elements.</ProblemDescription>
+    <SourceFile>C:\Users\102146016\source\repos\DBfinal\DBfinal\Tables\Interests102146016.sql</SourceFile>
+    <Line>3</Line>
+    <Column>15</Column>
+    <Severity>Warning</Severity>
+  </Problem>
+</Problems>
