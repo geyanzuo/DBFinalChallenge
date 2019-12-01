@@ -1,0 +1,21 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Orders102146016]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       unnamed constraint on [dbo].[Orders102146016] (Foreign Key)
+       unnamed constraint on [dbo].[Orders102146016] (Foreign Key)
+     Table rebuild
+       [dbo].[Orders102146016] (Table)
+
+** Supporting actions
+     Create
+       Foreign Key: unnamed constraint on [dbo].[Orders102146016] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[Orders102146016] (Foreign Key)

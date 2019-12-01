@@ -2,7 +2,7 @@
 (
 	CustomerNo INT,
 	RecordID varchar(20),
-	DateOrder Date,
+	DateOrder nvarchar(50),
 	Price float,
 	Primary Key(CustomerNo, RecordID, DateOrder),
 	Foreign Key(CustomerNo) references Customers102146016(CustomerNo),

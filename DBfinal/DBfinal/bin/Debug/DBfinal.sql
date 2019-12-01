@@ -15,8 +15,8 @@ SET NUMERIC_ROUNDABORT OFF;
 GO
 :setvar DatabaseName "DBfinal"
 :setvar DefaultFilePrefix "DBfinal"
-:setvar DefaultDataPath "C:\Users\102146016\AppData\Local\Microsoft\VisualStudio\SSDT\DBfinal"
-:setvar DefaultLogPath "C:\Users\102146016\AppData\Local\Microsoft\VisualStudio\SSDT\DBfinal"
+:setvar DefaultDataPath "C:\Users\Charlie\AppData\Local\Microsoft\VisualStudio\SSDT\DBfinal"
+:setvar DefaultLogPath "C:\Users\Charlie\AppData\Local\Microsoft\VisualStudio\SSDT\DBfinal"
 
 GO
 :on error exit
@@ -37,6 +37,80 @@ IF N'$(__IsSqlCmdEnabled)' NOT LIKE N'True'
 
 GO
 USE [$(DatabaseName)];
+
+
+GO
+PRINT N'Dropping unnamed constraint on [dbo].[Orders102146016]...';
+
+
+GO
+ALTER TABLE [dbo].[Orders102146016] DROP CONSTRAINT [FK__Orders102__Custo__2A4B4B5E];
+
+
+GO
+PRINT N'Dropping unnamed constraint on [dbo].[Orders102146016]...';
+
+
+GO
+ALTER TABLE [dbo].[Orders102146016] DROP CONSTRAINT [FK__Orders102__Recor__2B3F6F97];
+
+
+GO
+PRINT N'Starting rebuilding table [dbo].[Orders102146016]...';
+
+
+GO
+BEGIN TRANSACTION;
+
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+
+SET XACT_ABORT ON;
+
+CREATE TABLE [dbo].[tmp_ms_xx_Orders102146016] (
+    [CustomerNo] INT           NOT NULL,
+    [RecordID]   VARCHAR (20)  NOT NULL,
+    [DateOrder]  NVARCHAR (50) NOT NULL,
+    [Price]      FLOAT (53)    NULL,
+    PRIMARY KEY CLUSTERED ([CustomerNo] ASC, [RecordID] ASC, [DateOrder] ASC)
+);
+
+IF EXISTS (SELECT TOP 1 1 
+           FROM   [dbo].[Orders102146016])
+    BEGIN
+        INSERT INTO [dbo].[tmp_ms_xx_Orders102146016] ([CustomerNo], [RecordID], [DateOrder], [Price])
+        SELECT   [CustomerNo],
+                 [RecordID],
+                 [DateOrder],
+                 [Price]
+        FROM     [dbo].[Orders102146016]
+        ORDER BY [CustomerNo] ASC, [RecordID] ASC, [DateOrder] ASC;
+    END
+
+DROP TABLE [dbo].[Orders102146016];
+
+EXECUTE sp_rename N'[dbo].[tmp_ms_xx_Orders102146016]', N'Orders102146016';
+
+COMMIT TRANSACTION;
+
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[Orders102146016]...';
+
+
+GO
+ALTER TABLE [dbo].[Orders102146016] WITH NOCHECK
+    ADD FOREIGN KEY ([CustomerNo]) REFERENCES [dbo].[Customers102146016] ([CustomerNo]);
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[Orders102146016]...';
+
+
+GO
+ALTER TABLE [dbo].[Orders102146016] WITH NOCHECK
+    ADD FOREIGN KEY ([RecordID]) REFERENCES [dbo].[Perform102146016] ([RecordID]);
 
 
 GO
@@ -98,6 +172,93 @@ Insert into Orders102146016 values
 ( 234, 'SP075', '2015-12-04', 5.67),
 ( 567, 'PF007', '2015-12-03', 9.95);
 GO
+
+GO
+PRINT N'Checking existing data against newly created constraints';
+
+
+GO
+USE [$(DatabaseName)];
+
+
+GO
+CREATE TABLE [#__checkStatus] (
+    id           INT            IDENTITY (1, 1) PRIMARY KEY CLUSTERED,
+    [Schema]     NVARCHAR (256),
+    [Table]      NVARCHAR (256),
+    [Constraint] NVARCHAR (256)
+);
+
+SET NOCOUNT ON;
+
+DECLARE tableconstraintnames CURSOR LOCAL FORWARD_ONLY
+    FOR SELECT SCHEMA_NAME([schema_id]),
+               OBJECT_NAME([parent_object_id]),
+               [name],
+               0
+        FROM   [sys].[objects]
+        WHERE  [parent_object_id] IN (OBJECT_ID(N'dbo.Orders102146016'))
+               AND [type] IN (N'F', N'C')
+                   AND [object_id] IN (SELECT [object_id]
+                                       FROM   [sys].[check_constraints]
+                                       WHERE  [is_not_trusted] <> 0
+                                              AND [is_disabled] = 0
+                                       UNION
+                                       SELECT [object_id]
+                                       FROM   [sys].[foreign_keys]
+                                       WHERE  [is_not_trusted] <> 0
+                                              AND [is_disabled] = 0);
+
+DECLARE @schemaname AS NVARCHAR (256);
+
+DECLARE @tablename AS NVARCHAR (256);
+
+DECLARE @checkname AS NVARCHAR (256);
+
+DECLARE @is_not_trusted AS INT;
+
+DECLARE @statement AS NVARCHAR (1024);
+
+BEGIN TRY
+    OPEN tableconstraintnames;
+    FETCH tableconstraintnames INTO @schemaname, @tablename, @checkname, @is_not_trusted;
+    WHILE @@fetch_status = 0
+        BEGIN
+            PRINT N'Checking constraint: ' + @checkname + N' [' + @schemaname + N'].[' + @tablename + N']';
+            SET @statement = N'ALTER TABLE [' + @schemaname + N'].[' + @tablename + N'] WITH ' + CASE @is_not_trusted WHEN 0 THEN N'CHECK' ELSE N'NOCHECK' END + N' CHECK CONSTRAINT [' + @checkname + N']';
+            BEGIN TRY
+                EXECUTE [sp_executesql] @statement;
+            END TRY
+            BEGIN CATCH
+                INSERT  [#__checkStatus] ([Schema], [Table], [Constraint])
+                VALUES                  (@schemaname, @tablename, @checkname);
+            END CATCH
+            FETCH tableconstraintnames INTO @schemaname, @tablename, @checkname, @is_not_trusted;
+        END
+END TRY
+BEGIN CATCH
+    PRINT ERROR_MESSAGE();
+END CATCH
+
+IF CURSOR_STATUS(N'LOCAL', N'tableconstraintnames') >= 0
+    CLOSE tableconstraintnames;
+
+IF CURSOR_STATUS(N'LOCAL', N'tableconstraintnames') = -1
+    DEALLOCATE tableconstraintnames;
+
+SELECT N'Constraint verification failed:' + [Schema] + N'.' + [Table] + N',' + [Constraint]
+FROM   [#__checkStatus];
+
+IF @@ROWCOUNT > 0
+    BEGIN
+        DROP TABLE [#__checkStatus];
+        RAISERROR (N'An error occurred while verifying constraints', 16, 127);
+    END
+
+SET NOCOUNT OFF;
+
+DROP TABLE [#__checkStatus];
+
 
 GO
 PRINT N'Update complete.';

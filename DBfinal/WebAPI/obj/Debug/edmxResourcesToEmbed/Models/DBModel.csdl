@@ -29,7 +29,7 @@
     </Key>
     <Property Name="CustomerNo" Type="Int32" Nullable="false" />
     <Property Name="RecordID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="DateOrder" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateOrder" Type="String" Nullable="false" />
     <Property Name="Price" Type="Double" />
     <NavigationProperty Name="Customers102146016" Relationship="Self.FK__Orders102__Custo__4C6B5938" FromRole="Orders102146016" ToRole="Customers102146016" />
     <NavigationProperty Name="Perform102146016" Relationship="Self.FK__Orders102__Recor__4D5F7D71" FromRole="Orders102146016" ToRole="Perform102146016" />

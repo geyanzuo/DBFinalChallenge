@@ -11,28 +11,27 @@ namespace WebAPI.Controllers
 {
     public class CustomerController : ApiController
     {
-       
+        ModelFactory modelfactory;
 
-        // GET api/<controller>
-        public IEnumerable<Customers102146016> Get()
+        public CustomerController()
         {
-
-            string query = "Select * from Customer102146016";
-            SqlCommand command = new SqlCommand(query);
-            SqlDataReader result = command.ExecuteReader();
-            List<Customers102146016> customer = new List<Customers102146016>();
-
-            while (result.Read())
-            {
-                customer.Add(new Customers102146016(int.Parse(result[0].ToString()), result[1].ToString(), result[2].ToString, int.Parse(result[0].ToString())));
-            }
-            return customer;
+            modelfactory = new ModelFactory();
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        // GET api/<controller>
+        public IEnumerable<Customer> Get()
         {
-            return "value";
+            QueryCommand qc = new QueryCommand();
+            return qc.GetCustomers102146016().ToList().Select(c=>modelfactory.Create(c));
+        }
+
+        // GET api/<controller>/<CustomerNo>
+        public Customers102146016 Get(int id)
+        {
+            using (DBModel model = new DBModel())
+            {
+                return model.Customers102146016.FirstOrDefault(c => c.CustomerNo == id);
+            }
         }
 
         // POST api/<controller>
