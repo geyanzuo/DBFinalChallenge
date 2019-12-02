@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Data.SqlClient;
 
 namespace WebAPI
 {
@@ -15,6 +16,8 @@ namespace WebAPI
             config.Formatters.Add(config.Formatters.JsonFormatter);
 
             config.Formatters.JsonFormatter.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
+
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             // Web API routes
             config.MapHttpAttributeRoutes();
 
