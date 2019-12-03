@@ -1,0 +1,21 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Customers102146016] (Table)
+       [dbo].[Interests102146016] (Table)
+       [dbo].[Orders102146016] (Table)
+       [dbo].[Perform102146016] (Table)
+       Foreign Key: unnamed constraint on [dbo].[Interests102146016] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[Orders102146016] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[Orders102146016] (Foreign Key)
+
+** Supporting actions

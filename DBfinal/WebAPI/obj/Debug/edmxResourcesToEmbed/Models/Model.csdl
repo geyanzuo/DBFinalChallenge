@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBmodelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Customers102146016">
+    <Key>
+      <PropertyRef Name="CustomerNo" />
+    </Key>
+    <Property Name="CustomerNo" Type="Int32" Nullable="false" />
+    <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerPcode" Type="Int32" />
+    <NavigationProperty Name="Interests102146016" Relationship="Self.FK__Interests__Custo__29572725" FromRole="Customers102146016" ToRole="Interests102146016" />
+    <NavigationProperty Name="Orders102146016" Relationship="Self.FK__Orders102__Custo__2A4B4B5E" FromRole="Customers102146016" ToRole="Orders102146016" />
+  </EntityType>
+  <EntityType Name="Interests102146016">
+    <Key>
+      <PropertyRef Name="InterestCode" />
+      <PropertyRef Name="CustomerNo" />
+    </Key>
+    <Property Name="InterestCode" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomerNo" Type="Int32" Nullable="false" />
+    <Property Name="InterestDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Customers102146016" Relationship="Self.FK__Interests__Custo__29572725" FromRole="Interests102146016" ToRole="Customers102146016" />
+  </EntityType>
+  <EntityType Name="Orders102146016">
+    <Key>
+      <PropertyRef Name="CustomerNo" />
+      <PropertyRef Name="RecordID" />
+      <PropertyRef Name="DateOrder" />
+    </Key>
+    <Property Name="CustomerNo" Type="Int32" Nullable="false" />
+    <Property Name="RecordID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateOrder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Double" />
+    <NavigationProperty Name="Customers102146016" Relationship="Self.FK__Orders102__Custo__2A4B4B5E" FromRole="Orders102146016" ToRole="Customers102146016" />
+    <NavigationProperty Name="Perform102146016" Relationship="Self.FK__Orders102__Recor__2B3F6F97" FromRole="Orders102146016" ToRole="Perform102146016" />
+  </EntityType>
+  <EntityType Name="Perform102146016">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Performer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Orders102146016" Relationship="Self.FK__Orders102__Recor__2B3F6F97" FromRole="Perform102146016" ToRole="Orders102146016" />
+  </EntityType>
+  <Association Name="FK__Interests__Custo__29572725">
+    <End Role="Customers102146016" Type="Self.Customers102146016" Multiplicity="1" />
+    <End Role="Interests102146016" Type="Self.Interests102146016" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers102146016">
+        <PropertyRef Name="CustomerNo" />
+      </Principal>
+      <Dependent Role="Interests102146016">
+        <PropertyRef Name="CustomerNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders102__Custo__2A4B4B5E">
+    <End Role="Customers102146016" Type="Self.Customers102146016" Multiplicity="1" />
+    <End Role="Orders102146016" Type="Self.Orders102146016" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers102146016">
+        <PropertyRef Name="CustomerNo" />
+      </Principal>
+      <Dependent Role="Orders102146016">
+        <PropertyRef Name="CustomerNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders102__Recor__2B3F6F97">
+    <End Role="Perform102146016" Type="Self.Perform102146016" Multiplicity="1" />
+    <End Role="Orders102146016" Type="Self.Orders102146016" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perform102146016">
+        <PropertyRef Name="RecordID" />
+      </Principal>
+      <Dependent Role="Orders102146016">
+        <PropertyRef Name="RecordID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBmodelEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers102146016" EntityType="Self.Customers102146016" />
+    <EntitySet Name="Interests102146016" EntityType="Self.Interests102146016" />
+    <EntitySet Name="Orders102146016" EntityType="Self.Orders102146016" />
+    <EntitySet Name="Perform102146016" EntityType="Self.Perform102146016" />
+    <AssociationSet Name="FK__Interests__Custo__29572725" Association="Self.FK__Interests__Custo__29572725">
+      <End Role="Customers102146016" EntitySet="Customers102146016" />
+      <End Role="Interests102146016" EntitySet="Interests102146016" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders102__Custo__2A4B4B5E" Association="Self.FK__Orders102__Custo__2A4B4B5E">
+      <End Role="Customers102146016" EntitySet="Customers102146016" />
+      <End Role="Orders102146016" EntitySet="Orders102146016" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders102__Recor__2B3F6F97" Association="Self.FK__Orders102__Recor__2B3F6F97">
+      <End Role="Perform102146016" EntitySet="Perform102146016" />
+      <End Role="Orders102146016" EntitySet="Orders102146016" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

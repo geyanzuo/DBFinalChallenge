@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DADModelsStoreContainer" CdmEntityContainer="DADModel">
+    <EntitySetMapping Name="Customers102146016">
+      <EntityTypeMapping TypeName="DADModels.Customers102146016">
+        <MappingFragment StoreEntitySet="Customers102146016">
+          <ScalarProperty Name="CustomerNo" ColumnName="CustomerNo" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+          <ScalarProperty Name="CustomerPcode" ColumnName="CustomerPcode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Interests102146016">
+      <EntityTypeMapping TypeName="DADModels.Interests102146016">
+        <MappingFragment StoreEntitySet="Interests102146016">
+          <ScalarProperty Name="InterestCode" ColumnName="InterestCode" />
+          <ScalarProperty Name="CustomerNo" ColumnName="CustomerNo" />
+          <ScalarProperty Name="InterestDesc" ColumnName="InterestDesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders102146016">
+      <EntityTypeMapping TypeName="DADModels.Orders102146016">
+        <MappingFragment StoreEntitySet="Orders102146016">
+          <ScalarProperty Name="CustomerNo" ColumnName="CustomerNo" />
+          <ScalarProperty Name="RecordID" ColumnName="RecordID" />
+          <ScalarProperty Name="DateOrder" ColumnName="DateOrder" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Perform102146016">
+      <EntityTypeMapping TypeName="DADModels.Perform102146016">
+        <MappingFragment StoreEntitySet="Perform102146016">
+          <ScalarProperty Name="RecordID" ColumnName="RecordID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Performer" ColumnName="Performer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

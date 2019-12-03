@@ -15,3 +15,9 @@ C:\Users\Charlie\Documents\GitHub\DBFinalChallenge\DBfinal\DBfinal\bin\Debug\DBf
 C:\Users\Charlie\Documents\GitHub\DBFinalChallenge\DBfinal\DBfinal\obj\Debug\DBfinal.sqlprojAssemblyReference.cache
 C:\Users\Charlie\Documents\GitHub\DBFinalChallenge\DBfinal\DBfinal\obj\Debug\DBfinal.dll
 C:\Users\Charlie\Documents\GitHub\DBFinalChallenge\DBfinal\DBfinal\obj\Debug\DBfinal.pdb
+C:\Users\102146016\Documents\GitHub\DBFinalChallenge\DBfinal\DBfinal\bin\Debug\DBfinal.dacpac
+C:\Users\102146016\Documents\GitHub\DBFinalChallenge\DBfinal\DBfinal\bin\Debug\DBfinal.dll
+C:\Users\102146016\Documents\GitHub\DBFinalChallenge\DBfinal\DBfinal\bin\Debug\DBfinal.pdb
+C:\Users\102146016\Documents\GitHub\DBFinalChallenge\DBfinal\DBfinal\obj\Debug\DBfinal.sqlprojAssemblyReference.cache
+C:\Users\102146016\Documents\GitHub\DBFinalChallenge\DBfinal\DBfinal\obj\Debug\DBfinal.dll
+C:\Users\102146016\Documents\GitHub\DBFinalChallenge\DBfinal\DBfinal\obj\Debug\DBfinal.pdb

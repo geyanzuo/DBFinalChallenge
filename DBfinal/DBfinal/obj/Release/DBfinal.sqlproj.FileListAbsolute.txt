@@ -1,0 +1,9 @@
+C:\Users\102146016\Documents\GitHub\DBFinalChallenge\DBfinal\DBfinal\bin\Release\DBfinal.dacpac
+C:\Users\102146016\Documents\GitHub\DBFinalChallenge\DBfinal\DBfinal\bin\Release\DBfinal.dll
+C:\Users\102146016\Documents\GitHub\DBFinalChallenge\DBfinal\DBfinal\bin\Release\DBfinal.pdb
+C:\Users\102146016\Documents\GitHub\DBFinalChallenge\DBfinal\DBfinal\obj\Release\Model.xml
+C:\Users\102146016\Documents\GitHub\DBFinalChallenge\DBfinal\DBfinal\obj\Release\refactor.xml
+C:\Users\102146016\Documents\GitHub\DBFinalChallenge\DBfinal\DBfinal\obj\Release\postdeploy.sql
+C:\Users\102146016\Documents\GitHub\DBFinalChallenge\DBfinal\DBfinal\obj\Release\predeploy.sql
+C:\Users\102146016\Documents\GitHub\DBFinalChallenge\DBfinal\DBfinal\obj\Release\DBfinal.dll
+C:\Users\102146016\Documents\GitHub\DBFinalChallenge\DBfinal\DBfinal\obj\Release\DBfinal.pdb

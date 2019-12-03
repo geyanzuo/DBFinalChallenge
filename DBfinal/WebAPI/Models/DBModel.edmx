@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DADModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DADModels.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Customers102146016">
           <Key>
             <PropertyRef Name="CustomerNo" />
@@ -31,7 +31,7 @@
           </Key>
           <Property Name="CustomerNo" Type="int" Nullable="false" />
           <Property Name="RecordID" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="DateOrder" Type="date" Nullable="false" />
+          <Property Name="DateOrder" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Price" Type="float" />
         </EntityType>
         <EntityType Name="Perform102146016">
@@ -54,7 +54,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders102__Custo__4C6B5938">
+        <Association Name="FK__Orders102__Custo__3DE82FB7">
           <End Role="Customers102146016" Type="Self.Customers102146016" Multiplicity="1" />
           <End Role="Orders102146016" Type="Self.Orders102146016" Multiplicity="*" />
           <ReferentialConstraint>
@@ -66,7 +66,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders102__Recor__4D5F7D71">
+        <Association Name="FK__Orders102__Recor__3EDC53F0">
           <End Role="Perform102146016" Type="Self.Perform102146016" Multiplicity="1" />
           <End Role="Orders102146016" Type="Self.Orders102146016" Multiplicity="*" />
           <ReferentialConstraint>
@@ -78,7 +78,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DADModelStoreContainer">
+        <EntityContainer Name="DADModelsStoreContainer">
           <EntitySet Name="Customers102146016" EntityType="Self.Customers102146016" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Interests102146016" EntityType="Self.Interests102146016" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders102146016" EntityType="Self.Orders102146016" Schema="dbo" store:Type="Tables" />
@@ -87,11 +87,11 @@
             <End Role="Customers102146016" EntitySet="Customers102146016" />
             <End Role="Interests102146016" EntitySet="Interests102146016" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders102__Custo__4C6B5938" Association="Self.FK__Orders102__Custo__4C6B5938">
+          <AssociationSet Name="FK__Orders102__Custo__3DE82FB7" Association="Self.FK__Orders102__Custo__3DE82FB7">
             <End Role="Customers102146016" EntitySet="Customers102146016" />
             <End Role="Orders102146016" EntitySet="Orders102146016" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders102__Recor__4D5F7D71" Association="Self.FK__Orders102__Recor__4D5F7D71">
+          <AssociationSet Name="FK__Orders102__Recor__3EDC53F0" Association="Self.FK__Orders102__Recor__3EDC53F0">
             <End Role="Perform102146016" EntitySet="Perform102146016" />
             <End Role="Orders102146016" EntitySet="Orders102146016" />
           </AssociationSet>
@@ -100,7 +100,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DADModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DADModels" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Customers102146016">
           <Key>
             <PropertyRef Name="CustomerNo" />
@@ -110,7 +110,7 @@
           <Property Name="CustomerAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="CustomerPcode" Type="Int32" />
           <NavigationProperty Name="Interests102146016" Relationship="Self.FK__Interests__Custo__4B7734FF" FromRole="Customers102146016" ToRole="Interests102146016" />
-          <NavigationProperty Name="Orders102146016" Relationship="Self.FK__Orders102__Custo__4C6B5938" FromRole="Customers102146016" ToRole="Orders102146016" />
+          <NavigationProperty Name="Orders102146016" Relationship="Self.FK__Orders102__Custo__3DE82FB7" FromRole="Customers102146016" ToRole="Orders102146016" />
         </EntityType>
         <EntityType Name="Interests102146016">
           <Key>
@@ -130,10 +130,10 @@
           </Key>
           <Property Name="CustomerNo" Type="Int32" Nullable="false" />
           <Property Name="RecordID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DateOrder" Type="String" Nullable="false" />
+          <Property Name="DateOrder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Price" Type="Double" />
-          <NavigationProperty Name="Customers102146016" Relationship="Self.FK__Orders102__Custo__4C6B5938" FromRole="Orders102146016" ToRole="Customers102146016" />
-          <NavigationProperty Name="Perform102146016" Relationship="Self.FK__Orders102__Recor__4D5F7D71" FromRole="Orders102146016" ToRole="Perform102146016" />
+          <NavigationProperty Name="Customers102146016" Relationship="Self.FK__Orders102__Custo__3DE82FB7" FromRole="Orders102146016" ToRole="Customers102146016" />
+          <NavigationProperty Name="Perform102146016" Relationship="Self.FK__Orders102__Recor__3EDC53F0" FromRole="Orders102146016" ToRole="Perform102146016" />
         </EntityType>
         <EntityType Name="Perform102146016">
           <Key>
@@ -142,7 +142,7 @@
           <Property Name="RecordID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Performer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Orders102146016" Relationship="Self.FK__Orders102__Recor__4D5F7D71" FromRole="Perform102146016" ToRole="Orders102146016" />
+          <NavigationProperty Name="Orders102146016" Relationship="Self.FK__Orders102__Recor__3EDC53F0" FromRole="Perform102146016" ToRole="Orders102146016" />
         </EntityType>
         <Association Name="FK__Interests__Custo__4B7734FF">
           <End Role="Customers102146016" Type="Self.Customers102146016" Multiplicity="1" />
@@ -156,7 +156,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders102__Custo__4C6B5938">
+        <Association Name="FK__Orders102__Custo__3DE82FB7">
           <End Role="Customers102146016" Type="Self.Customers102146016" Multiplicity="1" />
           <End Role="Orders102146016" Type="Self.Orders102146016" Multiplicity="*" />
           <ReferentialConstraint>
@@ -168,7 +168,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders102__Recor__4D5F7D71">
+        <Association Name="FK__Orders102__Recor__3EDC53F0">
           <End Role="Perform102146016" Type="Self.Perform102146016" Multiplicity="1" />
           <End Role="Orders102146016" Type="Self.Orders102146016" Multiplicity="*" />
           <ReferentialConstraint>
@@ -180,7 +180,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBModel" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DADModel" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Customers102146016" EntityType="Self.Customers102146016" />
           <EntitySet Name="Interests102146016" EntityType="Self.Interests102146016" />
           <EntitySet Name="Orders102146016" EntityType="Self.Orders102146016" />
@@ -189,11 +189,11 @@
             <End Role="Customers102146016" EntitySet="Customers102146016" />
             <End Role="Interests102146016" EntitySet="Interests102146016" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders102__Custo__4C6B5938" Association="Self.FK__Orders102__Custo__4C6B5938">
+          <AssociationSet Name="FK__Orders102__Custo__3DE82FB7" Association="Self.FK__Orders102__Custo__3DE82FB7">
             <End Role="Customers102146016" EntitySet="Customers102146016" />
             <End Role="Orders102146016" EntitySet="Orders102146016" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders102__Recor__4D5F7D71" Association="Self.FK__Orders102__Recor__4D5F7D71">
+          <AssociationSet Name="FK__Orders102__Recor__3EDC53F0" Association="Self.FK__Orders102__Recor__3EDC53F0">
             <End Role="Perform102146016" EntitySet="Perform102146016" />
             <End Role="Orders102146016" EntitySet="Orders102146016" />
           </AssociationSet>
@@ -203,9 +203,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DADModelStoreContainer" CdmEntityContainer="DBModel">
+        <EntityContainerMapping StorageEntityContainer="DADModelsStoreContainer" CdmEntityContainer="DADModel">
           <EntitySetMapping Name="Customers102146016">
-            <EntityTypeMapping TypeName="DADModel.Customers102146016">
+            <EntityTypeMapping TypeName="DADModels.Customers102146016">
               <MappingFragment StoreEntitySet="Customers102146016">
                 <ScalarProperty Name="CustomerNo" ColumnName="CustomerNo" />
                 <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
@@ -215,7 +215,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Interests102146016">
-            <EntityTypeMapping TypeName="DADModel.Interests102146016">
+            <EntityTypeMapping TypeName="DADModels.Interests102146016">
               <MappingFragment StoreEntitySet="Interests102146016">
                 <ScalarProperty Name="InterestCode" ColumnName="InterestCode" />
                 <ScalarProperty Name="CustomerNo" ColumnName="CustomerNo" />
@@ -224,7 +224,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders102146016">
-            <EntityTypeMapping TypeName="DADModel.Orders102146016">
+            <EntityTypeMapping TypeName="DADModels.Orders102146016">
               <MappingFragment StoreEntitySet="Orders102146016">
                 <ScalarProperty Name="CustomerNo" ColumnName="CustomerNo" />
                 <ScalarProperty Name="RecordID" ColumnName="RecordID" />
@@ -234,7 +234,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Perform102146016">
-            <EntityTypeMapping TypeName="DADModel.Perform102146016">
+            <EntityTypeMapping TypeName="DADModels.Perform102146016">
               <MappingFragment StoreEntitySet="Perform102146016">
                 <ScalarProperty Name="RecordID" ColumnName="RecordID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />

@@ -20,15 +20,11 @@ namespace WebAPI.Models
             this.Interests102146016 = new HashSet<Interests102146016>();
             this.Orders102146016 = new HashSet<Orders102146016>();
         }
-
-        public Customers102146016(int v1, string v2, Func<string> toString, int v3)
-        {
-        }
-
+    
         public int CustomerNo { get; set; }
         public string CustomerName { get; set; }
         public string CustomerAddress { get; set; }
-        public int CustomerPcode { get; set; }
+        public Nullable<int> CustomerPcode { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Interests102146016> Interests102146016 { get; set; }

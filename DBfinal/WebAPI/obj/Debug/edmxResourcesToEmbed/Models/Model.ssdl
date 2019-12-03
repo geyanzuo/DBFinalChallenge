@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBmodelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Customers102146016">
+    <Key>
+      <PropertyRef Name="CustomerNo" />
+    </Key>
+    <Property Name="CustomerNo" Type="int" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerAddress" Type="nvarchar" MaxLength="200" />
+    <Property Name="CustomerPcode" Type="int" />
+  </EntityType>
+  <EntityType Name="Interests102146016">
+    <Key>
+      <PropertyRef Name="InterestCode" />
+      <PropertyRef Name="CustomerNo" />
+    </Key>
+    <Property Name="InterestCode" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CustomerNo" Type="int" Nullable="false" />
+    <Property Name="InterestDesc" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Orders102146016">
+    <Key>
+      <PropertyRef Name="CustomerNo" />
+      <PropertyRef Name="RecordID" />
+      <PropertyRef Name="DateOrder" />
+    </Key>
+    <Property Name="CustomerNo" Type="int" Nullable="false" />
+    <Property Name="RecordID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="DateOrder" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="float" />
+  </EntityType>
+  <EntityType Name="Perform102146016">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="Performer" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__Interests__Custo__29572725">
+    <End Role="Customers102146016" Type="Self.Customers102146016" Multiplicity="1" />
+    <End Role="Interests102146016" Type="Self.Interests102146016" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers102146016">
+        <PropertyRef Name="CustomerNo" />
+      </Principal>
+      <Dependent Role="Interests102146016">
+        <PropertyRef Name="CustomerNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders102__Custo__2A4B4B5E">
+    <End Role="Customers102146016" Type="Self.Customers102146016" Multiplicity="1" />
+    <End Role="Orders102146016" Type="Self.Orders102146016" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers102146016">
+        <PropertyRef Name="CustomerNo" />
+      </Principal>
+      <Dependent Role="Orders102146016">
+        <PropertyRef Name="CustomerNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders102__Recor__2B3F6F97">
+    <End Role="Perform102146016" Type="Self.Perform102146016" Multiplicity="1" />
+    <End Role="Orders102146016" Type="Self.Orders102146016" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perform102146016">
+        <PropertyRef Name="RecordID" />
+      </Principal>
+      <Dependent Role="Orders102146016">
+        <PropertyRef Name="RecordID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBmodelModelStoreContainer">
+    <EntitySet Name="Customers102146016" EntityType="Self.Customers102146016" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Interests102146016" EntityType="Self.Interests102146016" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders102146016" EntityType="Self.Orders102146016" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Perform102146016" EntityType="Self.Perform102146016" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Interests__Custo__29572725" Association="Self.FK__Interests__Custo__29572725">
+      <End Role="Customers102146016" EntitySet="Customers102146016" />
+      <End Role="Interests102146016" EntitySet="Interests102146016" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders102__Custo__2A4B4B5E" Association="Self.FK__Orders102__Custo__2A4B4B5E">
+      <End Role="Customers102146016" EntitySet="Customers102146016" />
+      <End Role="Orders102146016" EntitySet="Orders102146016" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders102__Recor__2B3F6F97" Association="Self.FK__Orders102__Recor__2B3F6F97">
+      <End Role="Perform102146016" EntitySet="Perform102146016" />
+      <End Role="Orders102146016" EntitySet="Orders102146016" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

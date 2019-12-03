@@ -17,7 +17,7 @@ namespace WebAPI.Models
         public int CustomerNo { get; set; }
         public string RecordID { get; set; }
         public string DateOrder { get; set; }
-        public double Price { get; set; }
+        public Nullable<double> Price { get; set; }
     
         public virtual Customers102146016 Customers102146016 { get; set; }
         public virtual Perform102146016 Perform102146016 { get; set; }

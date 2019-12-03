@@ -11,33 +11,44 @@ namespace WebAPI.Controllers
 {
     public class CustomerController : ApiController
     {
-        ModelFactory modelfactory;
-
-        public CustomerController()
-        {
-            modelfactory = new ModelFactory();
-        }
+       
 
         // GET api/<controller>
-        public IEnumerable<Customer> Get()
+        public IEnumerable<Customers102146016> Get()
         {
-            QueryCommand qc = new QueryCommand();
-            return qc.GetCustomers102146016().ToList().Select(c=>modelfactory.Create(c));
+            DADModel dBmodel = new DADModel();
+            return dBmodel.Customers102146016.ToList();
         }
 
         // GET api/<controller>/<CustomerNo>
         public Customers102146016 Get(int id)
         {
-            using (DBModel model = new DBModel())
-            {
-                return model.Customers102146016.FirstOrDefault(c => c.CustomerNo == id);
-            }
+            DADModel dBmodel = new DADModel();
+            return dBmodel.Customers102146016.FirstOrDefault(c => c.CustomerNo == id);
         }
 
+        
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        
+        public Customers102146016  Post([FromBody] Customer customer)           
         {
+            DADModel context = new DADModel();
+            
+                context.Customers102146016.Add(new Customers102146016()
+                {
+                    CustomerNo = customer.CustomerNo,
+                    CustomerAddress = customer.Address,
+                    CustomerName = customer.CustomerName,
+                    CustomerPcode = customer.PostCode
+                });
+
+                context.SaveChanges();
+
+            return Ok();
+            
         }
+        
+        
 
         // PUT api/<controller>/5
         public void Put(int id, [FromBody]string value)
@@ -45,8 +56,10 @@ namespace WebAPI.Controllers
         }
 
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        public Customers102146016 Delete(int id)
         {
+            DADModel dBmodel = new DADModel();
+            return dBmodel.Customers102146016.FirstOrDefault(c => c.CustomerNo == id);
         }
     }
 }

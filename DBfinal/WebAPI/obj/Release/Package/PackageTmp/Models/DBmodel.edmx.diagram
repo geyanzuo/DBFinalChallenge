@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6690af46b9a747f0a7fd7b4737bfcdf3" Name="Diagram1">
+        <EntityTypeShape EntityType="DADModels.Customers102146016" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DADModels.Interests102146016" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DADModels.Orders102146016" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DADModels.Perform102146016" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <AssociationConnector Association="DADModels.FK__Interests__Custo__4B7734FF" ManuallyRouted="false" />
+        <AssociationConnector Association="DADModels.FK__Orders102__Custo__3DE82FB7" ManuallyRouted="false" />
+        <AssociationConnector Association="DADModels.FK__Orders102__Recor__3EDC53F0" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

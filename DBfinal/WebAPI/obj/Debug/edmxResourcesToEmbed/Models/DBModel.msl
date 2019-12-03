@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DADModelStoreContainer" CdmEntityContainer="DBModel">
+  <EntityContainerMapping StorageEntityContainer="DADModelsStoreContainer" CdmEntityContainer="DADModel">
     <EntitySetMapping Name="Customers102146016">
-      <EntityTypeMapping TypeName="DADModel.Customers102146016">
+      <EntityTypeMapping TypeName="DADModels.Customers102146016">
         <MappingFragment StoreEntitySet="Customers102146016">
           <ScalarProperty Name="CustomerNo" ColumnName="CustomerNo" />
           <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
@@ -12,7 +12,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Interests102146016">
-      <EntityTypeMapping TypeName="DADModel.Interests102146016">
+      <EntityTypeMapping TypeName="DADModels.Interests102146016">
         <MappingFragment StoreEntitySet="Interests102146016">
           <ScalarProperty Name="InterestCode" ColumnName="InterestCode" />
           <ScalarProperty Name="CustomerNo" ColumnName="CustomerNo" />
@@ -21,7 +21,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Orders102146016">
-      <EntityTypeMapping TypeName="DADModel.Orders102146016">
+      <EntityTypeMapping TypeName="DADModels.Orders102146016">
         <MappingFragment StoreEntitySet="Orders102146016">
           <ScalarProperty Name="CustomerNo" ColumnName="CustomerNo" />
           <ScalarProperty Name="RecordID" ColumnName="RecordID" />
@@ -31,7 +31,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Perform102146016">
-      <EntityTypeMapping TypeName="DADModel.Perform102146016">
+      <EntityTypeMapping TypeName="DADModels.Perform102146016">
         <MappingFragment StoreEntitySet="Perform102146016">
           <ScalarProperty Name="RecordID" ColumnName="RecordID" />
           <ScalarProperty Name="Title" ColumnName="Title" />
